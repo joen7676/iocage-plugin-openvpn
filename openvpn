@@ -1,0 +1,28 @@
+File "/usr/local/lib/python3.9/site-packages/middlewared/main.py", line 138, in call_method
+    result = await self.middleware._call(message['method'], serviceobj, methodobj, params, app=self,
+  File "/usr/local/lib/python3.9/site-packages/middlewared/main.py", line 1224, in _call
+    return await self.run_in_executor(prepared_call.executor, methodobj, *prepared_call.args)
+  File "/usr/local/lib/python3.9/site-packages/middlewared/main.py", line 1128, in run_in_executor
+    return await loop.run_in_executor(pool, functools.partial(method, *args, **kwargs))
+  File "/usr/local/lib/python3.9/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.9/site-packages/middlewared/schema.py", line 979, in nf
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/middlewared/plugins/jail_freebsd.py", line 450, in defaults
+    plugins_obj.pull_clone_git_repo()
+  File "/usr/local/lib/python3.9/site-packages/iocage_lib/ioc_plugin.py", line 139, in pull_clone_git_repo
+    self._clone_repo(
+  File "/usr/local/lib/python3.9/site-packages/iocage_lib/ioc_plugin.py", line 1620, in _clone_repo
+    repo = git.Repo.clone_from(
+  File "/usr/local/lib/python3.9/site-packages/git/repo/base.py", line 988, in clone_from
+    return cls._clone(git, url, to_path, GitCmdObjectDB, progress, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/git/repo/base.py", line 939, in _clone
+    finalize_process(proc, stderr=stderr)
+  File "/usr/local/lib/python3.9/site-packages/git/util.py", line 333, in finalize_process
+    proc.wait(**kwargs)
+  File "/usr/local/lib/python3.9/site-packages/git/cmd.py", line 415, in wait
+    raise GitCommandError(self.args, status, errstr)
+git.exc.GitCommandError: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v https://github.com/ix-plugin-hub/iocage-plugin-index.git /mnt/naspool1/iocage/.plugins/github_com_ix-plugin-hub_iocage-plugin-index_git
+  stderr: 'Cloning into '/mnt/naspool1/iocage/.plugins/github_com_ix-plugin-hub_iocage-plugin-index_git'...
+fatal: unable to access 'https://github.com/ix-plugin-hub/iocage-plugin-index.git/': Couldn't connect to server
